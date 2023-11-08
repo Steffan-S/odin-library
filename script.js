@@ -32,39 +32,32 @@ function displayMyLibrary() {
         const bookContent = document.createElement('div');
         bookContent.classList.add('book_container');
 
-        let bookId = i; // Gives each book an unique ID label
-        bookContent.classList.add(bookId);
+        bookContent.classList.add(i);
 
         const bookTitle = document.createElement('h2');
-        bookTitle.textContent = myLibrary[i].title
+        bookTitle.textContent = myLibrary[i].title;
         bookContent.appendChild(bookTitle);
 
         const bookAuthor = document.createElement('h3');
-        bookAuthor.textContent = myLibrary[i].author
+        bookAuthor.textContent = myLibrary[i].author;
         bookContent.appendChild(bookAuthor);
 
         const bookPages = document.createElement('p');
-        bookPages.textContent = myLibrary[i].pages
+        bookPages.textContent = myLibrary[i].pages + ' Pages';
         bookContent.appendChild(bookPages);
 
-        const bookReadStatus = document.createElement('p');
-        bookReadStatus.textContent = myLibrary[i].readStatus
-        if (myLibrary[i].readStatus === 'Read') {
-            bookReadStatus.classList.add('read');
-        } else {
-            bookReadStatus.classList.add('notread');
-        }
-        bookContent.appendChild(bookReadStatus);
-
         const bookEditStats = document.createElement('button');
-        bookEditStats.textContent = "I've read this book";
+        bookEditStats.textContent = myLibrary[i].readStatus;
+
         bookEditStats.addEventListener('click', () => {
-            if (myLibrary[bookId].readStatus === 'Read') {
-                myLibrary[bookId].readStatus = 'Not read';
-                bookReadStatus.className = 'notread';
+            if (myLibrary[i].readStatus === 'Read') {
+                myLibrary[i].readStatus = 'Not read';
+                bookEditStats.classList.remove('read');   // Remove 'Read' class
+                bookEditStats.classList.add('notread');    // Add 'notread' class
             } else {
-                myLibrary[bookId].readStatus = 'Read';
-                bookReadStatus.className = 'Read';
+                myLibrary[i].readStatus = 'Read';
+                bookEditStats.classList.remove('notread');  // Remove 'notread' class
+                bookEditStats.classList.add('read');        // Add 'Read' class
             }
             displayMyLibrary();
         });
@@ -74,16 +67,14 @@ function displayMyLibrary() {
         const bookDelete = document.createElement('button');
         bookDelete.textContent = 'Delete book';
         bookDelete.classList.add('delete_button');
-        bookDelete.classList.add(bookId);
+        bookDelete.classList.add(i);
 
         bookDelete.addEventListener('click', () => {
-            myLibrary.splice(bookId, 1);
+            myLibrary.splice(i, 1);
             displayMyLibrary();
         });
 
         bookContent.appendChild(bookDelete);
-
-
 
         // appending all content to book grid container
         bookGrid.appendChild(bookContent);
