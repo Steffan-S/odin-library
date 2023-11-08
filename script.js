@@ -50,11 +50,16 @@ for (let i = 0; i < myLibrary.length; i++) {
     bookGrid.appendChild(bookContent);
 }
 
+// Add book
+const dialog = document.querySelector('dialog');
 
 
+const addBookBtn = document.querySelector('button');
+addBookBtn.addEventListener('click', () => {
+    dialog.showModal();
+})
 
-
-
-
-
-console.log(myLibrary);
+const addBookCloseBtn = document.getElementById('dialog_cancel_button');
+addBookCloseBtn.addEventListener('click', () => {
+    dialog.close();
+})

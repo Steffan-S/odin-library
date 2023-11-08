@@ -28,7 +28,32 @@
                 <p>Read</p>
             </div> -->
         </div>
+
     </div>
+        <dialog>
+            <form action="script.js" >
+                <label for="book_name">Name</label>
+                <input type="text" id="book_name" for="title" required placeholder="Harry Potter ...">
+
+                <label for="book_author">Author</label>
+                <input type="text" id="book_author" for="author" required placeholder="J.K. Rowling ...">
+
+                <label for="book_pages">Pages</label>
+                <input type="number" id="book_pages" for="pages" required placeholder="281 ...">
+
+                <label for="book_status">Did you read this book?</label>
+                <select id="book_status_options" name="book_status">
+                    <option value="Read">Yes, I've read this book</option>
+                    <option value="Not read">No, I did not read this book</option>
+                  </select>
+
+                <div class="dialog_buttons">
+                    <button type="submit" formmethod="dialog">Add Book</button>
+                    <button type="button" id="dialog_cancel_button">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
     
 </body>
 </html>
