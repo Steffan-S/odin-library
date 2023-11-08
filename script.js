@@ -39,6 +39,11 @@ for (let i = 0; i < myLibrary.length; i++) {
 
     const bookReadStatus = document.createElement('p');
     bookReadStatus.textContent = myLibrary[i].readStatus
+    if (myLibrary[i].readStatus === 'Read') {
+        bookReadStatus.classList.add('read');
+    } else {
+        bookReadStatus.classList.add('notread');
+    }
     bookContent.appendChild(bookReadStatus);
 
     // appending all content to book grid container
