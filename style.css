@@ -33,3 +33,18 @@ body {
 .header p {
     color:rgb(105, 105, 105);
 }
+
+.books_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.book_container {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #e8e8e8;
+    padding: 1rem;
+    border-radius: 4px;
+}

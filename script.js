@@ -18,4 +18,38 @@ function addBookToLibrary(title, author, pages, readStatus) {
   myLibrary.push(book);
 }
 
+for (let i = 0; i < myLibrary.length; i++) {
+    // book content
+    const bookGrid = document.querySelector('.books_grid')
+
+    const bookContent = document.createElement('div');
+    bookContent.classList.add('book_container');
+
+    const bookTitle = document.createElement('h2');
+    bookTitle.textContent = myLibrary[i].title
+    bookContent.appendChild(bookTitle);
+
+    const bookAuthor = document.createElement('h3');
+    bookAuthor.textContent = myLibrary[i].author
+    bookContent.appendChild(bookAuthor);
+
+    const bookPages = document.createElement('p');
+    bookPages.textContent = myLibrary[i].pages
+    bookContent.appendChild(bookPages);
+
+    const bookReadStatus = document.createElement('p');
+    bookReadStatus.textContent = myLibrary[i].readStatus
+    bookContent.appendChild(bookReadStatus);
+
+    // appending all content to book grid container
+    bookGrid.appendChild(bookContent);
+}
+
+
+
+
+
+
+
+
 console.log(myLibrary);
