@@ -19,12 +19,22 @@ function addBookToLibrary(title, author, pages, readStatus) {
 }
 
 function displayMyLibrary() {
+    const bookGrid = document.querySelector('.books_grid')
+
+    const deleteThisBook = document.getElementsByClassName('book_container');
+    // Remove existing book elements
+    while (deleteThisBook.length > 0) {
+        deleteThisBook[0].remove();
+    }
+
     for (let i = 0; i < myLibrary.length; i++) {
         // book content
-        const bookGrid = document.querySelector('.books_grid')
-
         const bookContent = document.createElement('div');
         bookContent.classList.add('book_container');
+        
+        let bookId = i; // Gives each book an unique ID label
+        bookContent.setAttribute('id', bookId);
+        bookId++;
 
         const bookTitle = document.createElement('h2');
         bookTitle.textContent = myLibrary[i].title
@@ -50,6 +60,7 @@ function displayMyLibrary() {
         // appending all content to book grid container
         bookGrid.appendChild(bookContent);
     };
+
 }
 
 
@@ -70,7 +81,7 @@ addBookCloseBtn.addEventListener('click', () => {
 const form = document.getElementById('addBookForm');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const formTitle = document.getElementById('book_name').value;
     const formAuthor = document.getElementById('book_author').value;
     const formPages = document.getElementById('book_pages').value;
@@ -81,3 +92,6 @@ form.addEventListener('submit', (e) => {
 
     dialog.close();
 });
+
+
+displayMyLibrary();
