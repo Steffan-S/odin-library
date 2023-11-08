@@ -11,19 +11,35 @@ body {
     align-content: center;
     color: rgb(17, 17, 17);
     font-size: 16px;
+    background-color: #f8f8f8;
 }
 
 .container {
-    width: 60%;
-    max-width: 960px;
+    width: 100%;
     flex: 1;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+
+.header_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px #e8e8e8;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: rgba(0,0,0,0.04) 0px 1px 4px 0px;
 }
 
 .header {
+    width: 60%;
+    max-width: 960px;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    border-bottom: solid 1px #e8e8e8;
     padding: 2rem 0;
 }
 
@@ -86,10 +102,12 @@ form button:focus {
 }
 
 .books_grid {
+    width: 60%;
+    max-width: 960px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .book_container {
@@ -101,6 +119,13 @@ form button:focus {
     padding: 1rem;
     border-radius: 4px;
     gap: 1rem;
+    background: #fff;
+    box-shadow: rgba(0,0,0,0.04) 0px 1px 4px 0px;
+    transition: all 0.3s ease;
+}
+
+.book_container:hover {
+    box-shadow: rgba(0,0,0,0.09) 0px 5.62772px 8.88315px 0px;
 }
 
 .book_container > div {
