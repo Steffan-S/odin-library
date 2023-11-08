@@ -50,9 +50,10 @@ for (let i = 0; i < myLibrary.length; i++) {
     bookGrid.appendChild(bookContent);
 }
 
-// Add book
-const dialog = document.querySelector('dialog');
 
+
+// Add book dialog
+const dialog = document.querySelector('dialog');
 
 const addBookBtn = document.querySelector('button');
 addBookBtn.addEventListener('click', () => {
@@ -63,3 +64,18 @@ const addBookCloseBtn = document.getElementById('dialog_cancel_button');
 addBookCloseBtn.addEventListener('click', () => {
     dialog.close();
 })
+
+const form = document.getElementById('addBookForm');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('hello');
+    const formTitle = document.getElementById('book_name').value;
+    const formAuthor = document.getElementById('book_author').value;
+    const formPages = document.getElementById('book_pages').value;
+    const formReadStatus = document.getElementById('book_status').value;
+    addBookToLibrary(formTitle, formAuthor, formPages, formReadStatus);
+
+    dialog.close();
+
+    console.log(myLibrary);
+});
