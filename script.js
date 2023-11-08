@@ -1,11 +1,11 @@
 const myLibrary = [];
 
 function Book(title, author, pages, readStatus) {
-  // the constructor...
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
+    // the constructor...
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
 }
 
 addBookToLibrary('Nirwana', 'Tommy Wieringa', '231', 'Read')
@@ -14,8 +14,8 @@ addBookToLibrary('Hoe overleef ik alles ...', 'Francine Oomen', '301', 'Read')
 addBookToLibrary('Kruiden, kokkels en kippen', 'Louise O. Fresco', '91', 'Not read')
 
 function addBookToLibrary(title, author, pages, readStatus) {
-  const book = new Book(title, author, pages, readStatus);
-  myLibrary.push(book);
+    const book = new Book(title, author, pages, readStatus);
+    myLibrary.push(book);
 }
 
 function displayMyLibrary() {
@@ -27,16 +27,13 @@ function displayMyLibrary() {
         deleteThisBook[0].remove();
     }
 
-
-
     for (let i = 0; i < myLibrary.length; i++) {
         // book content
         const bookContent = document.createElement('div');
         bookContent.classList.add('book_container');
-        
+
         let bookId = i; // Gives each book an unique ID label
         bookContent.classList.add(bookId);
-        
 
         const bookTitle = document.createElement('h2');
         bookTitle.textContent = myLibrary[i].title
@@ -59,6 +56,21 @@ function displayMyLibrary() {
         }
         bookContent.appendChild(bookReadStatus);
 
+        const bookEditStats = document.createElement('button');
+        bookEditStats.textContent = "I've read this book";
+        bookEditStats.addEventListener('click', () => {
+            if (myLibrary[bookId].readStatus === 'Read') {
+                myLibrary[bookId].readStatus = 'Not read';
+                bookReadStatus.className = 'notread';
+            } else {
+                myLibrary[bookId].readStatus = 'Read';
+                bookReadStatus.className = 'Read';
+            }
+            displayMyLibrary();
+        });
+
+        bookContent.appendChild(bookEditStats);
+
         const bookDelete = document.createElement('button');
         bookDelete.textContent = 'Delete book';
         bookDelete.classList.add('delete_button');
@@ -70,6 +82,8 @@ function displayMyLibrary() {
         });
 
         bookContent.appendChild(bookDelete);
+
+
 
         // appending all content to book grid container
         bookGrid.appendChild(bookContent);
@@ -98,7 +112,7 @@ form.addEventListener('submit', (e) => {
     const formAuthor = document.getElementById('book_author').value;
     const formPages = document.getElementById('book_pages').value;
     const formReadStatus = document.getElementById('book_status').value;
-    
+
     addBookToLibrary(formTitle, formAuthor, formPages, formReadStatus);
     displayMyLibrary();
 
