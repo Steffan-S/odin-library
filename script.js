@@ -31,20 +31,24 @@ function displayMyLibrary() {
         // book content
         const bookContent = document.createElement('div');
         bookContent.classList.add('book_container');
-
         bookContent.classList.add(i);
+
+        const bookContentTitle = document.createElement('div');
+        
 
         const bookTitle = document.createElement('h2');
         bookTitle.textContent = myLibrary[i].title;
-        bookContent.appendChild(bookTitle);
+        bookContentTitle.appendChild(bookTitle);
 
         const bookAuthor = document.createElement('h3');
         bookAuthor.textContent = myLibrary[i].author;
-        bookContent.appendChild(bookAuthor);
+        bookContentTitle.appendChild(bookAuthor);
 
         const bookPages = document.createElement('p');
         bookPages.textContent = myLibrary[i].pages + ' Pages';
-        bookContent.appendChild(bookPages);
+        bookContentTitle.appendChild(bookPages);
+
+        bookContent.appendChild(bookContentTitle);
 
         const bookEditStats = document.createElement('button');
         bookEditStats.textContent = myLibrary[i].readStatus;
@@ -75,7 +79,7 @@ function displayMyLibrary() {
         });
 
         bookContent.appendChild(bookDelete);
-
+        
         // appending all content to book grid container
         bookGrid.appendChild(bookContent);
     };
