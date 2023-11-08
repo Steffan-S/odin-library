@@ -8,11 +8,14 @@ function Book(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
-const book1 = new Book('Nirwana', 'Tommy Wieringa', '231', 'Read')
-const book2 = new Book('Voornamelijk vrouwen', 'Connie Palmen', '176', 'Not read')
-const book3 = new Book('Hoe overleef ik alles ...', 'Francine Oomen', '301', 'Read')
-const book4 = new Book('Kruiden, kokkels en kippen', 'Louise O. Fresco', '91', 'Not read')
+addBookToLibrary('Nirwana', 'Tommy Wieringa', '231', 'Read')
+addBookToLibrary('Voornamelijk vrouwen', 'Connie Palmen', '176', 'Not read')
+addBookToLibrary('Hoe overleef ik alles ...', 'Francine Oomen', '301', 'Read')
+addBookToLibrary('Kruiden, kokkels en kippen', 'Louise O. Fresco', '91', 'Not read')
 
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(title, author, pages, readStatus) {
+  const book = new Book(title, author, pages, readStatus);
+  myLibrary.push(book);
 }
+
+console.log(myLibrary);
