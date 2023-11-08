@@ -154,3 +154,16 @@ form select {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+.delete_button {
+    margin-top: 10px;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    border: none;
+}
+
+.delete_button:hover {
+    background: #d5d5d5;
+}

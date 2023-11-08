@@ -27,14 +27,16 @@ function displayMyLibrary() {
         deleteThisBook[0].remove();
     }
 
+
+
     for (let i = 0; i < myLibrary.length; i++) {
         // book content
         const bookContent = document.createElement('div');
         bookContent.classList.add('book_container');
         
         let bookId = i; // Gives each book an unique ID label
-        bookContent.setAttribute('id', bookId);
-        bookId++;
+        bookContent.classList.add(bookId);
+        
 
         const bookTitle = document.createElement('h2');
         bookTitle.textContent = myLibrary[i].title
@@ -57,12 +59,22 @@ function displayMyLibrary() {
         }
         bookContent.appendChild(bookReadStatus);
 
+        const bookDelete = document.createElement('button');
+        bookDelete.textContent = 'Delete book';
+        bookDelete.classList.add('delete_button');
+        bookDelete.classList.add(bookId);
+
+        bookDelete.addEventListener('click', () => {
+            myLibrary.splice(bookId, 1);
+            displayMyLibrary();
+        });
+
+        bookContent.appendChild(bookDelete);
+
         // appending all content to book grid container
         bookGrid.appendChild(bookContent);
     };
-
 }
-
 
 
 // Add book dialog
@@ -92,6 +104,10 @@ form.addEventListener('submit', (e) => {
 
     dialog.close();
 });
+
+
+// delete book
+
 
 
 displayMyLibrary();
