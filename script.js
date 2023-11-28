@@ -1,22 +1,27 @@
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
-    // the constructor...
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-}
+class books {
+    constructor(title, author, pages, readStatus){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
 
-addBookToLibrary('Nirwana', 'Tommy Wieringa', '231', 'Read')
-addBookToLibrary('Voornamelijk vrouwen', 'Connie Palmen', '176', 'Not read')
-addBookToLibrary('Hoe overleef ik alles ...', 'Francine Oomen', '301', 'Read')
-addBookToLibrary('Kruiden, kokkels en kippen', 'Louise O. Fresco', '91', 'Not read')
+    addBook(book) {
+        myLibrary.push(book);
+    }
+};
 
-function addBookToLibrary(title, author, pages, readStatus) {
-    const book = new Book(title, author, pages, readStatus);
-    myLibrary.push(book);
-}
+const defaultBookOne = new books('Nirwana', 'Tommy Wieringa', '231', 'Read');
+defaultBookOne.addBook(defaultBookOne);
+const defaultBookTwo = new books('Voornamelijk vrouwen', 'Connie Palmen', '176', 'Not read');
+defaultBookTwo.addBook(defaultBookTwo);
+const defaultBookThree = new books('Hoe overleef ik alles ...', 'Francine Oomen', '301', 'Read');
+defaultBookTwo.addBook(defaultBookTwo);
+const defaultBookFour = new books('Kruiden, kokkels en kippen', 'Louise O. Fresco', '91', 'Not read');
+defaultBookFour.addBook(defaultBookFour);
+
 
 function displayMyLibrary() {
     const bookGrid = document.querySelector('.books_grid')
@@ -108,15 +113,11 @@ form.addEventListener('submit', (e) => {
     const formPages = document.getElementById('book_pages').value;
     const formReadStatus = document.getElementById('book_status').value;
 
-    addBookToLibrary(formTitle, formAuthor, formPages, formReadStatus);
+    const newBook = new books (formTitle, formAuthor, formPages, formReadStatus);
+    newBook.addBook(newBook);
     displayMyLibrary();
 
     dialog.close();
 });
-
-
-// delete book
-
-
 
 displayMyLibrary();
